@@ -1,0 +1,146 @@
+.table {
+  position: relative;
+  padding-bottom: 20px;
+  background: #fff;
+  border: 1px solid #ebebeb;
+  box-sizing: border-box;
+  box-shadow: 0 15px 30px rgba(138, 118, 92, 0.1);
+  border-radius: 8px;
+  overflow: auto;
+
+  scrollbar-width: thin;
+  scrollbar-color: #909090 #ebebeb;
+
+  &::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #ebebeb;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #909090;
+    border-radius: 10px;
+  }
+}
+
+.tableFlat {
+  composes: table;
+
+  border: none;
+  border-radius: unset;
+  box-shadow: unset;
+
+  .tableRow,
+  .tableEmptyMsg {
+    padding: 20px 17px;
+  }
+}
+
+.tableRow {
+  position: relative;
+  display: grid;
+  justify-content: space-between;
+  grid-column-gap: 10px;
+
+  padding: 20px 16px;
+
+  border-bottom: 1px solid transparent;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    right: 20px;
+    left: 20px;
+    height: 1px;
+    background-color: #ebebeb;
+  }
+}
+
+.tableCol {
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+  word-break: break-word;
+}
+
+.tableHead {
+  .tableRow {
+    padding-bottom: 15px;
+  }
+
+  .tableCol {
+    font-size: 12px;
+    line-height: 18px;
+    color: #909090;
+  }
+}
+
+.tableHead,
+.tableBody {
+  width: 100%;
+}
+
+.tableBody {
+  .tableRow {
+    transition: 0.3s;
+
+    &:last-child {
+      border-bottom: none;
+
+      &::after {
+        display: none;
+      }
+    }
+
+    &:hover {
+      background: #ebebeb;
+    }
+
+    &.tableRowHovered > * {
+      pointer-events: none;
+    }
+  }
+}
+
+.tablePreloader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(250, 250, 250, 0.5);
+}
+
+.tableEmptyMsg {
+  padding: 20px 16px;
+}
+
+.dropIdicator {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+
+  pointer-events: none;
+
+  .dropIndicatorLine {
+    width: 100%;
+    border-bottom: 3px dashed var(--primary-color);
+  }
+
+  &.dropIdicatorUP {
+    top: -2px;
+  }
+
+  &.dropIdicatorDOWN {
+    bottom: -2px;
+  }
+}
